@@ -1,0 +1,29 @@
+/* 
+    Created on : Oct 5, 2016, 1:15:18 PM
+    Author     : plintus
+*/
+
+/* general*/
+html {
+    min-height: 100%;
+    min-width: 100%;
+    font-family: 'PT Sans', sans-serif;
+    font-size:14px;
+    background-color: white;
+}
+
+body{
+}
+
+a:link{
+    color: darkred;
+}
+a:visited{
+    color: darkred;
+}
+a:active{
+    color: darkred;
+}
+a:hover{
+    color: darkred;
+}

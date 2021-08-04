@@ -1,0 +1,47 @@
+<%@page import="java.util.Map"%>
+<%@ page pageEncoding="UTF-8" %>
+<%
+    String action = (String) request.getParameter("action");
+%>
+<%
+    String scheme = request.getScheme();
+    Integer rport = 0;
+    if (((scheme.equals("http")) && (request.getServerPort() != 80))
+            || ((scheme.equals("https")) && (request.getServerPort() != 443))) {
+        rport = request.getServerPort();
+    }
+    String wsuri = (scheme.equals("https") ? "wss" : "ws") + "://" + request.getServerName() + (rport != 0 ? ":" + rport : "") + request.getContextPath();
+    String uri = request.getScheme() + "://" + request.getServerName() + (rport != 0 ? ":" + rport : "") + request.getContextPath();
+
+%>
+<script>
+    if (typeof console === "undefined") {
+        this.console = {log: function (msg) {
+            }};
+    }
+
+    function getWsUri() {
+        var uri;
+        uri = '<%=wsuri%>';
+        return uri;
+    }
+
+    function opensock() {
+        var wsName = "ChatSocket";
+        sock.init(wsUri + "/" + wsName);
+    }
+
+    var wsUri = getWsUri();
+    var sock = new Websocket();
+    sock.addOnLoad(opensock);
+
+    var utils = new Utils();
+    var formes = new Forms();
+    var menus = new Menus();
+    
+    setInterval(function () {
+        var sobj = {type: "ping",
+            object: 0};
+        sock.send(Object.toJSON(sobj));
+    }, 60000);
+</script>
