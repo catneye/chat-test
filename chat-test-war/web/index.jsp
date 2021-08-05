@@ -90,11 +90,11 @@
                     block.appendChild(divhead0);
                     json.forEach(function (item, index, array) {
 
-                        //<div height:100%>
-                        //    <div height:90%>
+                        //<div width:100%>
+                        //    <div width:90%>
                         //    nentry
                         //    </div>
-                        //    <div height:10%>
+                        //    <div width:10%>
                         //    word
                         //    </div>
                         //</div>
@@ -131,7 +131,7 @@
                     console.log(old);
                     console.log(message.object);
                     var json = JSON.parse(message.object);
-                    $("canvasWindow").innerHTML = old + json.users + ": <br >" + json.texts + "<br >";
+                    $("canvasWindow").innerHTML = old + json.user + ": <br >" + json.texts + "<br >";
                 };
             }
 
