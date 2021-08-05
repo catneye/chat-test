@@ -71,13 +71,14 @@ public class WSHandler {
                     ResponseObject ro = new ResponseObject();
                     ro.setType(me.getType());
                     ro.setResult((String) me.getResult());
+                    ro.setObject(me.getObject());
 
                     //MessageInfo mi = new MessageInfo();
-                    Chat chat = (Chat) me.getObject();
+                    /*Chat chat = (Chat) me.getObject();
                     StringBuilder res = new StringBuilder();
                     res.append(chat.getUser()).append(": <br />");
                     res.append(chat.getTexts()).append(" <br />");
-                    ro.setObject(res.toString());
+                    ro.setObject(res.toString());*/
                     //ro.setObject(me.getObject());
                     //ro.setObject(me.getObject());
                     key.getBasicRemote().sendObject(ro);

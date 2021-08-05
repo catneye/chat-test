@@ -6,6 +6,7 @@
 package com.catneye.bean;
 
 import com.catneye.db.Chat;
+import com.catneye.db.Stats;
 import java.time.LocalDateTime;
 import java.util.List;
 import javax.ejb.Stateless;
@@ -50,13 +51,20 @@ public class ChatBean implements ChatBeanRemote {
             chat.setUser(user);
             Logger.getLogger(ChatBean.class.getName()).log(Level.INFO, "addMessage Chat: {0} ", chat.toString());
             em.persist(chat);
-            
+
             MessageInfo mi = new MessageInfo();
             mi.setResult("succes");
             mi.setType("newMessage");
             mi.setObject(chat);
             this.sendQueueMessage(mi);
         }
+    }
+
+    @Override
+    public List<Stats> getStats() {
+        Query query = em.createNamedQuery("Stats.findAll");
+        List<Stats> ret = query.getResultList();
+        return ret;
     }
 
     @Override

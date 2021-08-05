@@ -48,6 +48,8 @@ public class JmsQueue implements MessageListener {
 
             if (me.getType().equals("newMessage")) {
                 ws.sendToAllConnectedSessions(me);
+            } else if (me.getType().equals("getAllStats")) {
+                ws.sendToAllConnectedSessions(me);
             }
         } catch (JMSException ex) {
             Logger.getLogger(JmsQueue.class.getName()).log(Level.WARNING, "JMSException {0}", ex);

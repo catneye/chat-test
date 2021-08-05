@@ -7,6 +7,7 @@ package com.catneye.ws;
 
 import com.catneye.bean.ChatBeanRemote;
 import com.catneye.db.Chat;
+import com.catneye.db.Stats;
 import java.io.IOException;
 import java.io.Serializable;
 import java.util.List;
@@ -91,6 +92,12 @@ public class ChatSocket implements Serializable {
                     }
                     jsonResponse.setResult("success");
                     jsonResponse.setObject(res.toString());
+                    break;
+                }
+                case "getAllStats": {
+                    List<Stats> mss = chatEjb.getStats();
+                    jsonResponse.setResult("success");
+                    jsonResponse.setObject(mss);
                     break;
                 }
                 case "sendMessage": {
