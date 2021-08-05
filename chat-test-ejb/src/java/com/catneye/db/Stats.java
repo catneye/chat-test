@@ -78,4 +78,13 @@ public class Stats implements Serializable {
         this.nentry = nentry;
     }
     
+    @Override
+    public String toString() {
+        return new StringBuilder()
+                .append(id).append("; ")
+                .append(word).append("; ")
+                .append(ndoc).append("; ")
+                .append(nentry).append("; ")
+                .toString();
+    }
 }
